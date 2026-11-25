@@ -1,5 +1,6 @@
-# Whitelist: only the built page and the deploy workflow are published.
-# build.js, site.config.js, _src and the raw client photographs stay local
+# Whitelist: only the built output and the deploy workflow are published.
+# build.js, generate.js, build-*.js, site.config.js, content/, _src/, _source/, old-site/, audit files,
+# AUTOPILOT.json, every .md and the raw client photographs stay local
 # (the site-security gate flags them as S1 if they are served or public).
 *
 !.gitignore
@@ -7,3 +8,6 @@
 !.github/**
 !index.html
 !og-home.jpg
+!_site/
+!_site/**
+_site/**/*.md

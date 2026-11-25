@@ -22,8 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Stage only the built page
-        run: mkdir _site && cp index.html og-home.jpg _site/
+      # _site/ is the multi-page build (node build.js && node generate.js), committed through the
+      # .gitignore allowlist. It holds only the published pages and assets, never a build file.
+      - name: Check the built site is there
+        run: test -f _site/index.html && test -f _site/contact-us/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
